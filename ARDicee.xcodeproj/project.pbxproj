@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32FAB13C43DE058FD1401D25 /* Pods_ARDicee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3ADBD148EC25A9F7FC7E17E /* Pods_ARDicee.framework */; };
 		DA76E8AD212761EE00D7C148 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA76E8AC212761EE00D7C148 /* AppDelegate.swift */; };
 		DA76E8AF212761EE00D7C148 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = DA76E8AE212761EE00D7C148 /* art.scnassets */; };
 		DA76E8B1212761EE00D7C148 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA76E8B0212761EE00D7C148 /* ViewController.swift */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A19D9842C72990569BE4009 /* Pods-ARDicee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARDicee.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARDicee/Pods-ARDicee.release.xcconfig"; sourceTree = "<group>"; };
+		B3ADBD148EC25A9F7FC7E17E /* Pods_ARDicee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARDicee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA76E8A9212761EE00D7C148 /* ARDicee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARDicee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA76E8AC212761EE00D7C148 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA76E8AE212761EE00D7C148 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		DA76E8B5212761EF00D7C148 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA76E8B8212761EF00D7C148 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA76E8BA212761EF00D7C148 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2224523074F40E8087DB7AC /* Pods-ARDicee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARDicee.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARDicee/Pods-ARDicee.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32FAB13C43DE058FD1401D25 /* Pods_ARDicee.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45EE56D1747359DF53DC6080 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B3ADBD148EC25A9F7FC7E17E /* Pods_ARDicee.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C96B02606637598127705E70 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F2224523074F40E8087DB7AC /* Pods-ARDicee.debug.xcconfig */,
+				8A19D9842C72990569BE4009 /* Pods-ARDicee.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DA76E8A0212761EE00D7C148 = {
 			isa = PBXGroup;
 			children = (
 				DA76E8AB212761EE00D7C148 /* ARDicee */,
 				DA76E8AA212761EE00D7C148 /* Products */,
+				C96B02606637598127705E70 /* Pods */,
+				45EE56D1747359DF53DC6080 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA76E8BD212761EF00D7C148 /* Build configuration list for PBXNativeTarget "ARDicee" */;
 			buildPhases = (
+				97833D24066BB2C6DE821F91 /* [CP] Check Pods Manifest.lock */,
 				DA76E8A5212761EE00D7C148 /* Sources */,
 				DA76E8A6212761EE00D7C148 /* Frameworks */,
 				DA76E8A7212761EE00D7C148 /* Resources */,
+				0ACEEF888AF6814F82CE017F /* [CP] Embed Pods Frameworks */,
+				1447B4726811E90EA4944A42 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -133,6 +160,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0ACEEF888AF6814F82CE017F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARDicee/Pods-ARDicee-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1447B4726811E90EA4944A42 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARDicee/Pods-ARDicee-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		97833D24066BB2C6DE821F91 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ARDicee-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DA76E8A5212761EE00D7C148 /* Sources */ = {
@@ -282,15 +360,13 @@
 		};
 		DA76E8BE212761EF00D7C148 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2224523074F40E8087DB7AC /* Pods-ARDicee.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4N25H97F3B;
 				INFOPLIST_FILE = ARDicee/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AndrewJenson.ARDicee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -300,15 +376,13 @@
 		};
 		DA76E8BF212761EF00D7C148 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A19D9842C72990569BE4009 /* Pods-ARDicee.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4N25H97F3B;
 				INFOPLIST_FILE = ARDicee/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AndrewJenson.ARDicee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

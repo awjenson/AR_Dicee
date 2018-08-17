@@ -1,0 +1,6 @@
+framework module Pods_ARDicee {
+  umbrella header "Pods-ARDicee-umbrella.h"
+
+  export *
+  module * { export * }
+}
