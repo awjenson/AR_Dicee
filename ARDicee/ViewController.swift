@@ -19,14 +19,31 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the view's delegate
         sceneView.delegate = self
-        
-        // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
-        
-        // Set the scene to the view
-        sceneView.scene = scene
 
-        print("Let's get this onto Github. Test Commit and Push.")
+        // Create geometry called cube
+        // Units are meters
+        let cube = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
+
+        let materal = SCNMaterial()
+        materal.diffuse.contents = UIColor.red
+
+        cube.materials = [materal]
+
+        // Nodes are points in 3D space
+        let node = SCNNode()
+        // for z, negative is going away from you, positive coming towards you
+        node.position = SCNVector3(x: 0, y: 0.1, z: -0.5)
+
+        // assign geometry
+        node.geometry = cube
+
+        sceneView.scene.rootNode.addChildNode(node)
+
+//        // Create a new scene
+//        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+//
+//        // Set the scene to the view
+//        sceneView.scene = scene
 
     }
     
