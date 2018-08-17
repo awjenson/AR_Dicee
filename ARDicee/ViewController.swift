@@ -24,10 +24,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Units are meters
         let cube = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
 
-        let materal = SCNMaterial()
-        materal.diffuse.contents = UIColor.red
+        let sphere = SCNSphere(radius: 0.2)
 
-        cube.materials = [materal]
+        let materal = SCNMaterial()
+//        materal.diffuse.contents = UIColor.red
+        materal.diffuse.contents = UIImage(named: "art.scnassets/8k_moon")
+
+//        cube.materials = [materal]
+        sphere.materials = [materal]
 
         // Nodes are points in 3D space
         let node = SCNNode()
@@ -35,9 +39,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         node.position = SCNVector3(x: 0, y: 0.1, z: -0.5)
 
         // assign geometry
-        node.geometry = cube
+//        node.geometry = cube
+        node.geometry = sphere
 
         sceneView.scene.rootNode.addChildNode(node)
+        sceneView.autoenablesDefaultLighting = true
 
 //        // Create a new scene
 //        let scene = SCNScene(named: "art.scnassets/ship.scn")!
