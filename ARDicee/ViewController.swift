@@ -16,9 +16,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        self.sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
+
         // Set the view's delegate
         sceneView.delegate = self
+
+
+
 
 //        // Create geometry called cube
 //        // Units are meters
@@ -46,25 +51,31 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
         sceneView.autoenablesDefaultLighting = true
 
-        // Create a new scene
-        let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
-        if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
-            // Set the scene to the view
-            diceNode.position = SCNVector3(x: 0, y: 0, z: -0.1)
 
-            sceneView.scene.rootNode.addChildNode(diceNode)
-        }
+//        // Create a new scene
+//        let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
+//        if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
+//            // Set the scene to the view
+//            diceNode.position = SCNVector3(x: 0, y: 0, z: -0.1)
+//
+//            sceneView.scene.rootNode.addChildNode(diceNode)
+//        }
 
 
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // Create a session configuration
-        let configuration = ARWorldTrackingConfiguration()
+        var configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = .horizontal
 
-        print("World Tracking is supported = \(ARWorldTrackingConfiguration.isSupported)")
+//        if ARWorldTrackingConfiguration.isSupported {
+//            configuration = ARWorldTrackingConfiguration
+//        } else {
+//            configuration = AROrientationTrackingConfiguration()
+//        }
 
         // Run the view's session
         sceneView.session.run(configuration)
@@ -75,6 +86,49 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Pause the view's session
         sceneView.session.pause()
+    }
+
+    // Detect a horizontal surface and it's given that surface a width and a height which is an AR anchor so we can use it to place things or use it
+    // When it detects a horizontal plane, this method will be called
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        // An anchor is like a tile, it has a width and a height
+        // We want to check if the anchor that was identified is a planeAnchor
+        if anchor is ARPlaneAnchor {
+
+            // downcast planeAnchor into the data type ARPlaneAnchor
+            let planeAnchor = anchor as! ARPlaneAnchor
+
+            // convert into scenePlane that allows us to create a plane in sceneKit
+            // Only put 'x' and 'z' here (Not 'y').
+            let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.z))
+
+            // Create a plane node
+            let planeNode = SCNNode()
+
+            // Y position is 0 because it is a flat horizontal plane
+            planeNode.position = SCNVector3(x: planeAnchor.center.x, y: 0, z: planeAnchor.center.z)
+
+            // Scene planes are detected as vertical, but we want a horizontal plane
+            // angle: the angle that you want to rotate it by (counterclockwise)
+            // x, y, z: specify along which axis you want to rotate by
+            planeNode.transform = SCNMatrix4MakeRotation(-Float.pi/2, 1, 0, 0)
+
+            let gridMaterial = SCNMaterial()
+
+            gridMaterial.diffuse.contents = UIImage(named: "art.scnassets/grid.png")
+
+            plane.materials = [gridMaterial]
+
+            planeNode.geometry = plane
+
+            // Add child node into the root node (use node created when this method is called
+            node.addChildNode(planeNode)
+
+
+        } else {
+            // return / exit method
+            return
+        }
     }
 
 }
