@@ -12,7 +12,7 @@ import ARKit
 
 class ViewController: UIViewController, ARSCNViewDelegate {
 
-    // MARK: - IB Outlets
+    // MARK: - IBOutlets
     @IBOutlet var sceneView: ARSCNView!
 
     // MARK: - Properites
@@ -20,7 +20,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var diceArray = [SCNNode]()
 
     // MARK: - Lifecycle Methods
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,7 +34,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         super.viewWillAppear(animated)
         
         // Create a session configuration
-        var configuration = ARWorldTrackingConfiguration()
+        let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
 
         // Run the view's session
@@ -113,7 +113,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
     }
 
-    // MARK: - IB Actions
+    // MARK: - IBAction Methods
 
     @IBAction func removeAllDice(_ sender: UIBarButtonItem) {
 
