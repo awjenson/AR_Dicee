@@ -51,17 +51,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
         sceneView.autoenablesDefaultLighting = true
 
-
-//        // Create a new scene
-//        let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
-//        if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
-//            // Set the scene to the view
-//            diceNode.position = SCNVector3(x: 0, y: 0, z: -0.1)
-//
-//            sceneView.scene.rootNode.addChildNode(diceNode)
-//        }
-
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -86,6 +75,35 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Pause the view's session
         sceneView.session.pause()
+    }
+
+    // Touch detected in view or window
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // Check if touches was detected or just an error
+        if let touch = touches.first {
+            // SceneView is where our touch event was initiated
+            let touchLocation = touch.location(in: sceneView)
+
+            // convert touch location into 3D location inside our scene
+            let results = sceneView.hitTest(touchLocation, types: .existingPlaneUsingExtent)
+
+            if let hitResult = results.first {
+
+                // Create a new scene
+                let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
+                if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
+                    // Set the scene to the view
+                    // y position = how much elevation to give with the plane
+                    diceNode.position = SCNVector3(
+                        x: hitResult.worldTransform.columns.3.x,
+                        y: hitResult.worldTransform.columns.3.y + diceNode.boundingSphere.radius,
+                        z: hitResult.worldTransform.columns.3.z)
+
+                    sceneView.scene.rootNode.addChildNode(diceNode)
+                }
+            }
+        }
+
     }
 
     // Detect a horizontal surface and it's given that surface a width and a height which is an AR anchor so we can use it to place things or use it
